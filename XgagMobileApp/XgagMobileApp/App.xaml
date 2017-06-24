@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:common="clr-namespace:Common;assembly=Common"
+             x:Class="XgagMobileApp.App">
+	<Application.Resources>
+        <ResourceDictionary>
+            <common:BooleanOppositeValueConverter x:Key="BooleanOppositeValueConverter" />
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="#df691a" />
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="PlaceholderColor"
+                        Value="#dadada" />
+                <Setter Property="TextColor"
+                        Value="#df691a" />
+                <Setter Property="BackgroundColor"
+                        Value="#4e5d6c" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="#df691a" />
+                <Setter Property="TextColor"
+                        Value="#dadada" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

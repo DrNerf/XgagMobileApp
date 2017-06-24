@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XgagMobileApp"
+             xmlns:felipecsl="clr-namespace:Felipecsl.GifImageViewLibrary;assembly=Refractored.GifImageView"
+             x:Class="XgagMobileApp.MainPage"
+             BackgroundColor="#2b3e50">
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          Padding="5">
+        <ScrollView VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+            <ListView ItemsSource="{Binding Posts}"
+                      ItemAppearing="ListViewItemAppearing"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout VerticalOptions="CenterAndExpand"
+                                             HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding Title}" />
+                                <!--<local:TransparentWebView InputTransparent="True"
+                                                          HorizontalOptions="CenterAndExpand"
+                                                          VerticalOptions="Start">
+                                    <WebView.Source>
+                                        <HtmlWebViewSource Html="{Binding ImageHtml}" />
+                                    </WebView.Source>
+                                </local:TransparentWebView>-->
+                                <!--<Image Source="{Binding Image}"
+                                           WidthRequest="2000"
+                                           HorizontalOptions="CenterAndExpand" />-->
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+
+        <ActivityIndicator WidthRequest="100" 
+                           HeightRequest="100"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="CenterAndExpand"
+                           IsRunning="{Binding IsBusy}" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:common="clr-namespace:Common;assembly=Common"
+             x:Class="XgagMobileApp.LoginPage"
+             BackgroundColor="#2b3e50">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="CenterAndExpand"
+                         Padding="10">
+                <Label HorizontalOptions="Center">Login:</Label>
+                <Entry HorizontalOptions="FillAndExpand"
+                       Text="{Binding Username}"
+                       IsEnabled="{Binding IsBusy, Converter={StaticResource BooleanOppositeValueConverter}}"
+                       Placeholder="Username:" />
+                <Entry Placeholder="Password:"
+                       HorizontalOptions="FillAndExpand"
+                       Text="{Binding Password}"
+                       IsEnabled="{Binding IsBusy, Converter={StaticResource BooleanOppositeValueConverter}}"
+                       IsPassword="True" />
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Login"
+                            Command="{Binding LoginCommand}"
+                            HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+            </StackLayout>
+
+            <ActivityIndicator WidthRequest="100" 
+                           HeightRequest="100"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="CenterAndExpand"
+                           IsRunning="{Binding IsBusy}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
