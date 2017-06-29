@@ -16,7 +16,7 @@ namespace XgagMobileApp
             var bootstrapper = new Bootstrapper();
             bootstrapper.Init();
 
-			MainPage = bootstrapper.Container.Resolve<LoginPage>();
+			MainPage = bootstrapper.Container.Resolve<MainPage>();
 		}
 
 		protected override void OnStart ()

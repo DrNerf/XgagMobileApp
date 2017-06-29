@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace Common
 {
@@ -28,6 +29,13 @@ namespace Common
         protected void NotifyPropertyChanged([CallerMemberName]string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected void BusyExecute(Action method)
+        {
+            IsBusy = true;
+            Task.Factory.StartNew(method)
+                .ContinueWith((t) => { IsBusy = false; });
         }
     }
 }

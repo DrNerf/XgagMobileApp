@@ -37,11 +37,15 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Interfaces\Models\Posts\IPostModel.cs" />
+    <Compile Include="Interfaces\Models\System\IUserSessionModel.cs" />
+    <Compile Include="Interfaces\Proxies\IAuthenticationProxy.cs" />
     <Compile Include="Interfaces\Proxies\IPostsProxy.cs" />
     <Compile Include="Interfaces\Proxies\IProxyBase.cs" />
     <Compile Include="Models\Posts\PostModel.cs" />
+    <Compile Include="Models\System\UserSessionModel.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proxies\AuthenticationProxy.cs" />
     <Compile Include="Proxies\PostsProxy.cs" />
     <Compile Include="Proxies\ProxyBase.cs" />
   </ItemGroup>

@@ -8,10 +8,13 @@ namespace ServiceLayer
     {
         public void RegisterDependencies(IUnityContainer container)
         {
-            container.RegisterType<PostsProxy>(
-                new InjectionConstructor(
-                    new InjectionParameter<string>("posts")));
+            container.RegisterInstance<IUserSessionModel>(new UserSessionModel());
+
+            container.RegisterType<PostsProxy>();
             container.RegisterType<IPostsProxy, PostsProxy>();
+
+            container.RegisterType<AuthenticationProxy>();
+            container.RegisterType<IAuthenticationProxy, AuthenticationProxy>();
         }
     }
 }

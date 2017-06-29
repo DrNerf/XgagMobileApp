@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ServiceLayer
 {
     internal class PostsProxy : ProxyBase<IPostModel, PostModel>, IPostsProxy
     {
-        private const int m_PageSize = 5;
+        private const int m_PageSize = 15;
 
-        public PostsProxy(string service)
-            : base(service)
+        public PostsProxy(IUserSessionModel userSession)
+            : base($"Posts", userSession)
         {
         }
 

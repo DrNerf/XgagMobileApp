@@ -13,10 +13,14 @@ namespace ServiceLayer
         where TModelImplementation : TModelInterface
     {
         private string m_Service;
+        private IUserSessionModel m_UserSession;
 
-        public ProxyBase(string service)
+        public ProxyBase(
+            string service, 
+            IUserSessionModel userSession)
         {
             m_Service = service;
+            m_UserSession = userSession;
         }
 
         public virtual Task<IEnumerable<TModelInterface>> Get(IEnumerable<KeyValuePair<string, string>> query = null)
@@ -50,15 +54,20 @@ namespace ServiceLayer
             });
         }
 
-        private HttpClient CreateHttpClient()
+        protected HttpClient CreateHttpClient()
         {
             var client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            if (m_UserSession.SessionToken != default(Guid))
+            {
+                client.DefaultRequestHeaders.Add("SessionToken", m_UserSession.SessionToken.ToString()); 
+            }
+
             return client;
         }
 
-        private Task<T> SafeExecute<T>(Func<T> method)
+        protected Task<T> SafeExecute<T>(Func<T> method)
         {
             var methodTask = new Task<T>(method);
             methodTask.Start();
